@@ -10,7 +10,12 @@
     <string name="textConsultationsTime"></string>
     <string name="textConsultationsCoach"></string>
     <string name="login">Zaloguj się</string>
+    <string name="loginText">E-Mail</string>
     <string name="register">Zarejestruj się</string>
     <string name="username">Użytkownik</string>
     <string name="password">Hasło</string>
+    <string name="registerName">Imię i Nazwisko</string>
+    <string name="registerEmail">E-Mail</string>
+    <string name="registerPassword">Hasło</string>
+    <string name="registerConfirmPassword">Potwierdź hasło</string>
 </resources>
