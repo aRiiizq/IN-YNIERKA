@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">INZBottom</string>
+    <string name="title_home">Główna</string>
+    <string name="title_workout">Treningi</string>
+    <string name="title_consultations">Konsultacje</string>
+    <string name="title_notifications">Powiadomienia</string>
+    <string name="light_dark_mode">Tryb ciemny/jasny</string>
+    <string name="title_login">Login</string>
+    <string name="textConsultationsType"></string>
+    <string name="textConsultationsTime"></string>
+    <string name="textConsultationsCoach"></string>
+    <string name="login">Zaloguj się</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="username">Użytkownik</string>
+    <string name="password">Hasło</string>
+</resources>
