@@ -1,33 +1,40 @@
 package com.example.inzbottom.ui.Register
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.inzbottom.R
 import Api.ApiService
 import Data.RegisterRequest
 import Data.RegisterResponse
 import Network.RetrofitClient
-import com.example.inzbottom.ui.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_register, container, false)
+    }
 
-        val nameEditText = findViewById<EditText>(R.id.name)
-        val emailEditText = findViewById<EditText>(R.id.email)
-        val passwordEditText = findViewById<EditText>(R.id.password)
-        val confirmPasswordEditText = findViewById<EditText>(R.id.c_password)
-        val registerButton = findViewById<Button>(R.id.register_button)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val nameEditText = view.findViewById<EditText>(R.id.name)
+        val emailEditText = view.findViewById<EditText>(R.id.email)
+        val passwordEditText = view.findViewById<EditText>(R.id.password)
+        val confirmPasswordEditText = view.findViewById<EditText>(R.id.c_password)
+        val registerButton = view.findViewById<Button>(R.id.register_button)
 
         registerButton.setOnClickListener {
             val name = nameEditText.text.toString()
@@ -39,10 +46,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (password == c_password) {
                     register(name, email, password, c_password)
                 } else {
-                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -57,18 +64,18 @@ class RegisterActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val registerResponse = response.body()
                     if (registerResponse != null) {
-                        Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
 
                     } else {
-                        Toast.makeText(this@RegisterActivity, "Registration failed: No response body", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Registration failed: No response body", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@RegisterActivity, "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                Toast.makeText(this@RegisterActivity, "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

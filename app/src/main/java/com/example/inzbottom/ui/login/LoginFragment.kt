@@ -13,8 +13,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.inzbottom.R
 import com.example.inzbottom.databinding.FragmentLoginBinding
 import retrofit2.Call
@@ -107,5 +111,7 @@ class LoginFragment : Fragment() {
             .setPositiveButton(android.R.string.ok) { dialog, _ -> dialog.dismiss() }
             .show()
     }
+
+
 
 }

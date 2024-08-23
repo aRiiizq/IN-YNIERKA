@@ -14,7 +14,11 @@ import Api.ApiService
 import Data.LoginRequest
 import Data.LoginResponse
 import Network.RetrofitClient
-import com.example.inzbottom.ui.Register.RegisterActivity
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.inzbottom.ui.Register.RegisterFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -109,8 +113,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToRegisterActivity() {
-        val intent = Intent(this, RegisterActivity::class.java)
+        val intent = Intent(this, RegisterFragment::class.java)
         startActivity(intent)
         finish() // Close the login activity so the user can't go back to it
+    }
+
+
+    @Composable
+    fun myApp(){
+        val navController = rememberNavController()
+        NavHost(navController = navController, startDestination = "loginscreen"){
+            composable("loginscreen"){}
+            composable(route = "registerscreen"){}
+        }
     }
 }

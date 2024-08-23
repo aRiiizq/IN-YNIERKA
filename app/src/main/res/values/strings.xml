@@ -18,4 +18,5 @@
     <string name="registerEmail">E-Mail</string>
     <string name="registerPassword">Hasło</string>
     <string name="registerConfirmPassword">Potwierdź hasło</string>
+    <string name="registerBackButton">Powrót</string>
 </resources>
