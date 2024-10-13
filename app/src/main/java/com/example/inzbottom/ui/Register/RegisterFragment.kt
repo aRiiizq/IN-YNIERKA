@@ -8,11 +8,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.inzbottom.R
 import Api.ApiService
 import Data.RegisterRequest
 import Data.RegisterResponse
 import Network.RetrofitClient
+import com.example.inzbottom.ui.notifications.NotificationsFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +25,6 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
@@ -64,8 +65,10 @@ class RegisterFragment : Fragment() {
                 if (response.isSuccessful) {
                     val registerResponse = response.body()
                     if (registerResponse != null) {
-                        Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
-
+                        // Show a notification
+                        showWelcomeNotification(name)
+                        // Navigate to another fragment if needed
+                        findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
                     } else {
                         Toast.makeText(requireContext(), "Registration failed: No response body", Toast.LENGTH_SHORT).show()
                     }
@@ -78,5 +81,11 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(requireContext(), "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun showWelcomeNotification(name: String) {
+        // Assuming you want to use NotificationsFragment for the Toast
+        val fragment = NotificationsFragment()
+        fragment.showWelcomeNotification(name)
     }
 }

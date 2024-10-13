@@ -2,6 +2,7 @@
     <string name="app_name">INZBottom</string>
     <string name="title_home">Główna</string>
     <string name="title_workout">Treningi</string>
+    <string name="title_register">Rejestracja</string>
     <string name="title_consultations">Konsultacje</string>
     <string name="title_notifications">Powiadomienia</string>
     <string name="light_dark_mode">Tryb ciemny/jasny</string>

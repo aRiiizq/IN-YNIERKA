@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.inzbottom"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,12 +50,11 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.runtime.android)
-    implementation(libs.androidx.navigation.compose)
+    implementation ("androidx.navigation:navigation-compose:2.7.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-    implementation("androidx:navigation:navigation-compose:2.7.4")
 }
